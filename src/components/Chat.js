@@ -8,9 +8,9 @@ const Chat = () => {
       <div className="chatInfo">
         <span>Jane</span>
         <div className="chatIcons">
-        <i class="fa-solid fa-video"></i>
-        <i class="fa-solid fa-user-plus"></i>
-        <i class="fa-solid fa-ellipsis"></i>
+        <i className="fa-solid fa-video"></i>
+        <i className="fa-solid fa-user-plus"></i>
+        <i className="fa-solid fa-ellipsis"></i>
         </div>
       </div>
       <Messages/>

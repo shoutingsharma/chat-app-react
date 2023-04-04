@@ -5,10 +5,10 @@ const Input = () => {
     <div className='input'>
       <input type="text" placeholder='Type something...' />
       <div className="send">
-      <i class="fa-solid fa-paperclip"></i>
+      <i className="fa-solid fa-paperclip"></i>
         <input type="file" style={{display:"none"}} id='file' />
         <label htmlFor="file">
-      <i class="fa-solid fa-image"></i>
+      <i className="fa-solid fa-image"></i>
             
         </label>
         <button>Send</button>
