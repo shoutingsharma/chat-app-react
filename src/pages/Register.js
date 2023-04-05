@@ -7,8 +7,10 @@ import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
   const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const displayName = e.target[0].value;
     const email = e.target[1].value;
@@ -16,8 +18,12 @@ const Register = () => {
     const file = e.target[3].files[0];
 
     try {
+      //create user
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      const storageRef = ref(storage, displayName);
+
+      //create a unique image name
+      const date = new Date().getTime();
+      const storageRef = ref(storage, `${displayName + date}`);
 
       await uploadBytesResumable(storageRef, file).then(() => {
         getDownloadURL(storageRef).then(async (downloadURL) => {
@@ -41,12 +47,13 @@ const Register = () => {
           } catch (err) {
             console.log(err);
             setErr(true);
-            // setLoading(false);
+            setLoading(false);
           }
         });
       });
     } catch (err) {
       setErr(true);
+      setLoading(false);
     }
   };
   return (
@@ -64,7 +71,8 @@ const Register = () => {
             <i className="fa-solid fa-image"></i>
             <span>Add an avatar</span>
           </label>
-          <button>Sign Up</button>
+          <button disabled={loading}>Sign Up</button>
+          {loading && "Uploading and compressing the image please wait.."}
           {err && <span> Something went wrong!</span>}
         </form>
         <p>
