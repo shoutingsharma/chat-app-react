@@ -65,16 +65,16 @@ const Search = () => {
             displayName: user.displayName,
             photoURL: user.photoURL,
           },
-          [combinedId + ".date"]: serverTimestamp()
+          [combinedId + ".date"]: serverTimestamp(),
         });
 
         await updateDoc(doc(db, "userChats", user.uid), {
           [combinedId + ".userInfo"]: {
             uid: currentUser.uid,
             displayName: currentUser.displayName,
-            photoURL: currentUser.photoURL
+            photoURL: currentUser.photoURL,
           },
-          [combinedId + ".date"]: serverTimestamp()
+          [combinedId + ".date"]: serverTimestamp(),
         });
       }
     } catch (err) {
@@ -82,7 +82,6 @@ const Search = () => {
     }
     setUser(null);
     setUsername("");
-
   };
 
   return (

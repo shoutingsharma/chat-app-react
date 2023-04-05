@@ -17,7 +17,7 @@ const Register = () => {
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      const storageRef =  ref(storage, displayName);
+      const storageRef = ref(storage, displayName);
 
       await uploadBytesResumable(storageRef, file).then(() => {
         getDownloadURL(storageRef).then(async (downloadURL) => {
@@ -45,8 +45,6 @@ const Register = () => {
           }
         });
       });
-
-     
     } catch (err) {
       setErr(true);
     }
@@ -69,7 +67,9 @@ const Register = () => {
           <button>Sign Up</button>
           {err && <span> Something went wrong!</span>}
         </form>
-        <p>you have an account? <Link to="/login" >Login</Link></p>
+        <p>
+          you have an account? <Link to="/login">Login</Link>
+        </p>
       </div>
     </div>
   );
